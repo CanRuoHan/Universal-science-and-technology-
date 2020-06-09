@@ -7,9 +7,8 @@ import pandas as pd
 
 def option(series, start):
     data = np.where(series < start, series, np.nan)
-    new_series = pd.Series(np.where(series < start, series, np.nan))
-
-    new_series[len(data) +1] = 1 if np.all(data) else 0
+    new_series = pd.Series(data)
+    new_series[len(data) +1] = 1 if not new_series.isnull().any() else 0
 
     return new_series
 
