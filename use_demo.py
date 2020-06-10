@@ -34,11 +34,10 @@ def process_data(data):
     # 用训练好的训练器预测X_yd中的数据看是否有异常样本，如果结果为1是正常样本，结果为-1是异常样本
     y_pred_yd = iforest.predict(X_yd)
 
-    data['y_pred_yd'] = np.nan
-    data.loc[index, "y_pred_yd"] = y_pred_yd
-    ret = data.loc[:, 'y_pred_yd']
+    # data['y_pred_yd'] = np.nan
+    data.loc[index, 'iforests_abn'] = y_pred_yd
+    ret = data.loc[:, 'iforests_abn']
     print(ret)
-
 
 def main():
     data = pd.read_csv('./data.csv', encoding='utf-8')
