@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+
+
+import numpy as np
+import pandas as pd
+
+
+df = pd.DataFrame({'key1': np.array([2, 2, 2, 6, 0, 2]),
+                   'key2': np.arange(6, 12)})
+
+print(df)
+res_list = [1, 3, 4, 5]
+index = df['key1'] == 2
+df.loc[index, 'key1'] = np.array(res_list)
+
+print(df)
